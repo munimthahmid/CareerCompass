@@ -10,8 +10,6 @@ const Home = () => {
       {/* <IntroSection />
       <FeaturesSection />
       <SuccessStories /> */}
-
-      <h2>Home Page</h2>
     </MainLayout>
   );
 };

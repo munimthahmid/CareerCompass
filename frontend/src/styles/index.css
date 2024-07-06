@@ -1,7 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
-  @apply bg-gray-100 text-gray-900;
+  background: linear-gradient(
+    to right,
+    #5caaf8,
+    #c285fb
+  ); /* Adjusted colors for a more vibrant gradient */
+  min-height: 100vh;
+  margin: 0;
   font-family: "Inter", sans-serif;
 }
