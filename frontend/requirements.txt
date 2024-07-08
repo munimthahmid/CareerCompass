@@ -1,0 +1,3 @@
+npm install tw-elements-react
+npm install react-icons
+npm install axios
