@@ -79,7 +79,7 @@ const Signup = () => {
           </label>
           <input
             type="text"
-            id="name"
+            id="lastName"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Example Name"
             value={formData.lastName}
@@ -96,7 +96,7 @@ const Signup = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="example@gmail.com"
             value={formData.email}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             required
           />
         </div>
@@ -110,7 +110,7 @@ const Signup = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="user"
             value={formData.username}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </div>
         <div className="mb-4">
@@ -123,7 +123,7 @@ const Signup = () => {
               id="password"
               name="password"
               value={formData.password}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
