@@ -30,6 +30,8 @@ public class UserService {
         newUser.setPasswordHash(passwordEncoder.encode(registrationDTO.getPassword()));
         UserProfile newUserProfile = new UserProfile();
         newUserProfile.setUser(newUser);
+        newUserProfile.setFirstName(registrationDTO.getFirstName());
+        newUserProfile.setLastName(registrationDTO.getLastName());
         try {
             userRepository.save(newUser);
             userProfileRepository.save(newUserProfile);
