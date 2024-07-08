@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import Chatbot from "./Chatbot";
+import PropTypes from "prop-types";
 
 const MainLayout = ({ children }) => {
   return (
@@ -17,5 +18,7 @@ const MainLayout = ({ children }) => {
     </div>
   );
 };
-
+MainLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default MainLayout;

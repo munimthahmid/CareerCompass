@@ -1,6 +1,6 @@
 import React from "react";
 
-const JobListing = ({ job }) => {
+const JobListing = () => {
   return (
     <div className="border-b py-2">
       <h3>Job Listing</h3>
