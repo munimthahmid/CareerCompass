@@ -1,5 +1,6 @@
 package org.JITSquad.javafest2024.userService.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
@@ -21,6 +22,7 @@ public class UserProfile {
 
     @OneToOne
     @MapsId
+    @JsonIgnore
     @JoinColumn(name = "profile_id")
     private User user;
 
