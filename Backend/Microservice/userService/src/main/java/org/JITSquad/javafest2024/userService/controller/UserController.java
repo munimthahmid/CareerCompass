@@ -25,13 +25,13 @@ public class UserController {
       {
             return "Hello Suckers!";
       }
-      @PreAuthorize("hasRole('MENTOR')")
+      @PreAuthorize("hasRole('ROLE_MENTOR')")
       @GetMapping("/mentor")
       public String mentor()
       {
                 return "Hello Mentor!";
       }
-      @PreAuthorize("hasRole('USER')")
+      @PreAuthorize("hasRole('ROLE_USER')")
       @GetMapping("/user")
         public String user()
         {
