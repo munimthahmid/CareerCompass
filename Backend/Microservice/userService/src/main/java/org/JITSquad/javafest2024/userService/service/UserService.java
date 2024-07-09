@@ -1,8 +1,10 @@
 package org.JITSquad.javafest2024.userService.service;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.JITSquad.javafest2024.userService.dto.LoginRequest;
 import org.JITSquad.javafest2024.userService.dto.LoginResponse;
 import org.JITSquad.javafest2024.userService.dto.RegistrationDTO;
+import org.JITSquad.javafest2024.userService.dto.UserDTO;
 import org.JITSquad.javafest2024.userService.model.User;
 import org.JITSquad.javafest2024.userService.model.UserProfile;
 import org.JITSquad.javafest2024.userService.repository.UserProfileRepository;
@@ -30,14 +32,16 @@ public class UserService {
     private final JwtUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
     private final UserLoadingService userLoadingService;
+    private final HttpServletRequest request;
 
-    public UserService(UserRepository userRepository, UserProfileRepository userProfileRepository, PasswordEncoder passwordEncoder, JwtUtils jwtUtils, AuthenticationManager authenticationManager, UserLoadingService userLoadingService) {
+    public UserService(UserRepository userRepository, UserProfileRepository userProfileRepository, PasswordEncoder passwordEncoder, JwtUtils jwtUtils, AuthenticationManager authenticationManager, UserLoadingService userLoadingService, HttpServletRequest request) {
         this.userRepository = userRepository;
         this.userProfileRepository = userProfileRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtils = jwtUtils;
         this.authenticationManager = authenticationManager;
         this.userLoadingService = userLoadingService;
+        this.request = request;
     }
 
     public ResponseEntity<String> registerUser(RegistrationDTO registrationDTO) {
@@ -91,16 +95,58 @@ public class UserService {
         LoginResponse loginResponse = new LoginResponse(jwtToken,userDetails.getUsername(),roles);
         return ResponseEntity.ok(loginResponse);
     }
+    public UserDTO prepareUserDTO(UserProfile userProfile){
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserId(userProfile.getUser().getUserId());
+        userDTO.setUsername(userProfile.getUser().getUsername());
+        userDTO.setEmail(userProfile.getUser().getEmail());
+        userDTO.setRole(userProfile.getUser().getRole());
+        userDTO.setFirstName(userProfile.getFirstName());
+        userDTO.setLastName(userProfile.getLastName());
+        userDTO.setDateOfBirth(userProfile.getDateOfBirth());
+        userDTO.setBio(userProfile.getBio());
+        userDTO.setProfilePicture(userProfile.getProfilePicture());
+        userDTO.setAddress(userProfile.getAddress());
+        userDTO.setCareerGoals(userProfile.getCareerGoals());
+        userDTO.setInterests(userProfile.getInterests());
+        userDTO.setCurrentCareer(userProfile.getCurrentCareer());
+        userDTO.setGithubUrl(userProfile.getGithubUrl());
+        userDTO.setLinkedinUrl(userProfile.getLinkedinUrl());
+        userDTO.setCreatedAt(userProfile.getCreatedAt());
+        userDTO.setUpdatedAt(userProfile.getUpdatedAt());
+        return userDTO;
+    }
+
+    private String getAuthenticatedUserEmail() {
+        String jwt = jwtUtils.getJwtFromHeader(request);
+        String email = jwtUtils.getUserNameFromJwtToken(jwt);
+        System.out.println("userName from jwt token: " + email);
+        return email;
+    }
 
     public ResponseEntity<?> getUserById(UUID userId) {
+        String email = getAuthenticatedUserEmail();
         User user = userRepository.findById(userId).orElse(null);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
         }
-        return ResponseEntity.ok(user);
+        if (!user.getEmail().equals(email)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
+        UserDTO userDTO = prepareUserDTO(userProfileRepository.findByUser(user));
+        return ResponseEntity.ok(userDTO);
     }
 
-    public ResponseEntity<User> getUserByUsername(String username) {
-        return new ResponseEntity<>(userRepository.findByUsername(username), HttpStatus.OK);
+    public ResponseEntity<?> getUserByUsername(String username) {
+        String email = getAuthenticatedUserEmail();
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+        }
+        if (!user.getEmail().equals(email)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
+        UserDTO userDTO = prepareUserDTO(userProfileRepository.findByUser(user));
+        return ResponseEntity.ok(userDTO);
     }
 }

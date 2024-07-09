@@ -2,20 +2,17 @@ package org.JITSquad.javafest2024.userService.controller;
 
 import org.JITSquad.javafest2024.userService.dto.LoginRequest;
 import org.JITSquad.javafest2024.userService.dto.RegistrationDTO;
-import org.JITSquad.javafest2024.userService.model.User;
 import org.JITSquad.javafest2024.userService.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.UUID;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/api/users")
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -54,7 +51,7 @@ public class UserController {
                 return userService.getUserById(userId);
         }
         @GetMapping("/user/name/{username}")
-        public ResponseEntity<User> getUserByUsername(@PathVariable String username)
+        public ResponseEntity<?> getUserByUsername(@PathVariable String username)
         {
             return userService.getUserByUsername(username);
         }
