@@ -1,0 +1,65 @@
+[33mcommit 0e4010908ef12fdd3cdb2b21ebcd279d3bd3ad4e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Merge: 3173aa9 a9d7105
+Author: Munim <munimthahmid2@gmail.com>
+Date:   Tue Jul 9 00:33:03 2024 +0600
+
+    Merge branch 'master' of https://github.com/munimthahmid/CareerCompass
+    Testing integration with backend successful
+
+[33mcommit 3173aa9cd40eeefc829c1dc36af5467d52a66553[m
+Author: Munim <munimthahmid2@gmail.com>
+Date:   Tue Jul 9 00:32:48 2024 +0600
+
+    lastName bug fixed
+
+[33mcommit a9d71057a7454f85381c357be058bf4790681eff[m[33m ([m[1;31morigin/master[m[33m)[m
+Merge: 65e4256 80b9ca5
+Author: Munim Thahmid <95485323+munimthahmid@users.noreply.github.com>
+Date:   Tue Jul 9 00:31:57 2024 +0600
+
+    Merge pull request #1 from Tasriad/master
+    
+    Front end Backend integration test for registration
+
+[33mcommit 80b9ca5deed32ef051802dab8de9fafddec150bb[m
+Author: Tias <trisn.eclipse@gmail.com>
+Date:   Tue Jul 9 00:24:08 2024 +0600
+
+    minor adjustments for testing
+
+[33mcommit 5dc9da1d703ae9498c49586a91bcf07afa7b0c67[m
+Merge: 5e3d635 65e4256
+Author: Tias <trisn.eclipse@gmail.com>
+Date:   Mon Jul 8 23:49:07 2024 +0600
+
+    Merge branch 'master' of https://github.com/Tasriad/CareerCompass
+
+[33mcommit 65e4256bd7dee2e4fa2d125b8eb6b145b004c7a8[m
+Author: Munim <munimthahmid2@gmail.com>
+Date:   Mon Jul 8 23:41:43 2024 +0600
+
+    login and signup page modifed
+
+[33mcommit 5e3d6358fde2b5a36f81a68a8ec94f5695e7bfe9[m
+Author: Tias <trisn.eclipse@gmail.com>
+Date:   Mon Jul 8 23:39:31 2024 +0600
+
+    userService structure, registration
+
+[33mcommit a2ee8ba2ebb9a9889762b8eec11c244fa9b9b74c[m
+Author: Munim <munimthahmid2@gmail.com>
+Date:   Sat Jul 6 14:42:34 2024 +0600
+
+    initial styling done
+
+[33mcommit 32e377d5e90ec7dd192dea4e932c597eef660942[m
+Author: Munim <munimthahmid2@gmail.com>
+Date:   Sat Jul 6 14:14:30 2024 +0600
+
+    initial page routing done
+
+[33mcommit f02d1734f443264446eb21140317828e9abfec34[m
+Author: Munim <munimthahmid2@gmail.com>
+Date:   Sat Jul 6 13:06:50 2024 +0600
+
+    initial commit
