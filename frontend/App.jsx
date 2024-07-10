@@ -10,8 +10,9 @@ import Login from "./src/pages/Login";
 import Signup from "./src/pages/Signup";
 import NotFound from "./src/pages/NotFound";
 import { AuthProvider } from "./src/context/AuthContext";
-
+import SelectItems from "./src/components/SignUp/SelectItems";
 import "./src/styles/index.css";
+import Progressbar from "./src/components/Progressbar";
 
 const App = () => {
   console.log("Hello!");
@@ -28,6 +29,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/progressbar" element={<Progressbar />} />
+        <Route path="/interest" element={<SelectItems />} />
       </Routes>
     </BrowserRouter>
     /* </AuthProvider> */
