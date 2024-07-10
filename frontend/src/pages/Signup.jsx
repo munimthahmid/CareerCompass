@@ -1,6 +1,6 @@
 import React from "react";
 import MainLayout from "../components/MainLayout";
-import SignUpForm from "../components/SignUpForm";
+import SignUpForm from "../components/SignUp/SignUpForm";
 
 const Signup = () => {
   return (
