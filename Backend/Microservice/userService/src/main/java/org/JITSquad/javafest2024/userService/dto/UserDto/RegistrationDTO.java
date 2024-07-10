@@ -1,4 +1,4 @@
-package org.JITSquad.javafest2024.userService.dto;
+package org.JITSquad.javafest2024.userService.dto.UserDto;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -16,6 +16,4 @@ public class RegistrationDTO {
     private String username;
     private String email;
     private String password;
-    @Enumerated(EnumType.STRING)
-    private Roles role;
 }

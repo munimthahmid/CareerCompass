@@ -1,4 +1,4 @@
-package org.JITSquad.javafest2024.userService.dto;
+package org.JITSquad.javafest2024.userService.dto.Responses;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

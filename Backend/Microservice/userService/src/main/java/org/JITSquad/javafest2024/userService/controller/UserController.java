@@ -1,7 +1,8 @@
 package org.JITSquad.javafest2024.userService.controller;
 
-import org.JITSquad.javafest2024.userService.dto.LoginRequest;
-import org.JITSquad.javafest2024.userService.dto.RegistrationDTO;
+import org.JITSquad.javafest2024.userService.dto.Requests.LoginRequest;
+import org.JITSquad.javafest2024.userService.dto.UserDto.RegistrationDTO;
+import org.JITSquad.javafest2024.userService.dto.UserDto.UserDTO;
 import org.JITSquad.javafest2024.userService.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,12 +23,6 @@ public class UserController {
       {
             return "Hello Suckers!";
       }
-      @PreAuthorize("hasRole('ROLE_MENTOR')")
-      @GetMapping("/mentor")
-      public String mentor()
-      {
-                return "Hello Mentor!";
-      }
       @PreAuthorize("hasRole('ROLE_USER')")
       @GetMapping("/user")
         public String user()
@@ -40,11 +35,11 @@ public class UserController {
       {
           return userService.registerUser(registrationDTO);
       }
-        @PostMapping("/signin")
-        public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest)
-        {
+      @PostMapping("/signin")
+      public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest)
+      {
             return userService.authenticateUser(loginRequest);
-        }
+      }
         @GetMapping("/user/id/{userId}")
         public ResponseEntity<?> getUserById(@PathVariable UUID userId)
         {
@@ -55,6 +50,12 @@ public class UserController {
         {
             return userService.getUserByUsername(username);
         }
+        @PutMapping("/user/update/id/{userId}")
+        public ResponseEntity<?> updateUserById(@PathVariable UUID userId, @RequestBody UserDTO userDTO)
+        {
+            return userService.updateUserById(userId,userDTO);
+        }
+
 
 
 }
