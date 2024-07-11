@@ -1,8 +1,11 @@
-package org.JITSquad.javafest2024.userService.dto;
+package org.JITSquad.javafest2024.userService.dto.UserDto;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.JITSquad.javafest2024.userService.model.Roles;
 
 @Data
 @AllArgsConstructor

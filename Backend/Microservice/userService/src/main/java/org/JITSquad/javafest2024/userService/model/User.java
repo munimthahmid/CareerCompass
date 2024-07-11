@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -25,8 +26,11 @@ public class User {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password_hash", nullable = false)
-    private String passwordHash;
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Roles role;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -38,9 +42,13 @@ public class User {
     @PrimaryKeyJoinColumn
     private UserProfile userProfile;
 
-    public User(String email, String passwordHash) {
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private MentorProfile mentorProfile;
+
+    public User(String email, String password) {
         this.email = email;
-        this.passwordHash = passwordHash;
+        this.password = password;
     }
     // PrePersist and PreUpdate methods to set timestamps
     @PrePersist
