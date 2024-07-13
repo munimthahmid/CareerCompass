@@ -1,12 +1,10 @@
-// src/AddressForm.js
 import React, { useState } from "react";
-
+import axios from "axios";
+import { useEffect } from "react";
 const AddressForm = () => {
   const [address, setAddress] = useState({
     street: "",
-    apartment: "",
     city: "",
-    state: "",
     zip: "",
     country: "",
   });

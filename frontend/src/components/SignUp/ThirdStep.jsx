@@ -1,7 +1,34 @@
 // src/AddressForm.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
+import SelectItems from "./SelectItems";
+import SelectRegions from "./SelectRegions";
 const ThirdStep = ({ formData, handleBack, handleSubmit, handleChange }) => {
+  const [countries, setCountries] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [countryStates, setCountryStates] = useState("");
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          `https://continentl.com/api/country-list?page=1&key=sk-FB7E668f7546d881d310`
+        );
+        const names = response.data.map((country) => country.name);
+        const countryStates = response.data.map((country) => ({
+          name: country.name,
+          states: country.states,
+        }));
+        setCountries(names);
+        setCountryStates(countryStates);
+        console.log(names);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
   const [errors, setErrors] = useState({});
 
   const validate = () => {
@@ -15,11 +42,13 @@ const ThirdStep = ({ formData, handleBack, handleSubmit, handleChange }) => {
     if (!formData.address.country) newErrors.country = "Country is required";
     return newErrors;
   };
-  const handleChangeAddress = (e) => {
-    const { name, value } = e.target;
-    const prev = formData.address;
-    const newAddress = { ...prev, [name]: value };
-    handleChange(newAddress, "address");
+  const handleChangeAddress = (e, isValue = false) => {
+    if (!isValue) {
+      const { name, value } = e.target;
+      const prev = formData.address;
+      const newAddress = { ...prev, [name]: value };
+      handleChange(newAddress, "address");
+    } else handleChange(e, "address");
   };
   const handleSubmitThirdPage = (e) => {
     e?.preventDefault();
@@ -53,16 +82,7 @@ const ThirdStep = ({ formData, handleBack, handleSubmit, handleChange }) => {
             />
             {errors.street && <span>{errors.street}</span>}
           </div>
-          <div>
-            <label className="block text-gray-700 mb-2">Apartment:</label>
-            <input
-              type="text"
-              name="apartment"
-              value={formData.address.apartment}
-              onChange={handleChangeAddress}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+
           <div>
             <label className="block text-gray-700 mb-2">City:</label>
             <input
@@ -73,17 +93,6 @@ const ThirdStep = ({ formData, handleBack, handleSubmit, handleChange }) => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.city && <span>{errors.city}</span>}
-          </div>
-          <div>
-            <label className="block text-gray-700 mb-2">State:</label>
-            <input
-              type="text"
-              name="state"
-              value={formData.address.state}
-              onChange={handleChangeAddress}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.state && <span>{errors.state}</span>}
           </div>
           <div>
             <label className="block text-gray-700 mb-2">Zip Code:</label>
@@ -98,12 +107,27 @@ const ThirdStep = ({ formData, handleBack, handleSubmit, handleChange }) => {
           </div>
           <div>
             <label className="block text-gray-700 mb-2">Country:</label>
-            <input
-              type="text"
-              name="country"
-              value={formData.address.country}
-              onChange={handleChangeAddress}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+
+            <SelectRegions
+              onChange={handleChange}
+              formData={formData}
+              options={countries}
+              setOptions={setCountries}
+              setCities={setCities}
+              countryStates={countryStates}
+              type="country"
+            />
+            {errors.country && <span>{errors.country}</span>}
+          </div>
+
+          <div>
+            <label className="block text-gray-700 mb-2">City:</label>
+
+            <SelectRegions
+              onChange={handleChange}
+              formData={formData}
+              options={cities}
+              type="city"
             />
             {errors.country && <span>{errors.country}</span>}
           </div>

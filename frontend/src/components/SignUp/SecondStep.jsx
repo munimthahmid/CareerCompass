@@ -486,21 +486,6 @@ const SecondStep = ({
     "Youth Worker",
   ]);
 
-  //   useEffect(() => {
-  //     // Fetch the fields of interest from an API
-  //     const fetchInterests = async () => {
-  //       try {
-  //         const response = await fetch("http://localhost:8080/api/interests");
-  //         const data = await response.json();
-  //         setInterests(data);
-  //       } catch (error) {
-  //         console.error("Error fetching interests:", error);
-  //       }
-  //     };
-
-  //     fetchInterests();
-  //   }, []);
-
   function handleDateSelect(e) {
     setStartDate(e);
     handleChange(e);
@@ -594,7 +579,7 @@ const SecondStep = ({
             onClick={handleSubmitSecondPage}
             className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
           >
-            Submit
+            Next
           </button>
         </div>
       </div>

@@ -27,6 +27,7 @@ const Signup = () => {
     return formData.selectedInterests;
   }
   function handleChange(e, type = "") {
+    console.log("type: " + type);
     if (type === "address") {
       setFormData((prev) => ({ ...prev, address: e }));
     } else if (Array.isArray(e)) {
