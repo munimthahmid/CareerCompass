@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import the icons
 import Progressbar from "../Progressbar";
 import SecondStep from "./SecondStep"; // Import the SecondStep component
-
+import ThirdStep from "./ThirdStep";
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [step, setStep] = useState(1);
@@ -13,21 +13,38 @@ const Signup = () => {
     email: "",
     password: "",
     username: "",
-    dob: "",
+    dob: null,
     careerStatus: "",
     selectedInterests: [],
+    careerGoals: [],
+    address: {},
   });
 
   function togglePasswordVisibility() {
     setShowPassword((showPassword) => !showPassword);
   }
+  function test() {
+    return formData.selectedInterests;
+  }
+  function handleChange(e, type = "") {
+    console.log("type: " + type);
+    if (type === "address") {
+      setFormData((prev) => ({ ...prev, address: e }));
+    } else if (Array.isArray(e)) {
+      if (type == "fieldOfInterest")
+        setFormData((prev) => ({ ...prev, selectedInterests: e }));
+      if (type === "careerGoal")
+        setFormData((prev) => ({ ...prev, careerGoals: e }));
+    } else if (e instanceof Date) {
+      setFormData((prev) => ({ ...prev, dob: e }));
+    } else {
+      e.preventDefault();
+      const targetName = e.target.id;
+      const value = e.target.value;
+      console.log(targetName);
 
-  function handleChange(e) {
-    const targetName = e.target.id;
-    const value = e.target.value;
-    console.log(targetName);
-
-    setFormData((prev) => ({ ...prev, [targetName]: value }));
+      setFormData((prev) => ({ ...prev, [targetName]: value }));
+    }
   }
 
   const handleNext = (data) => {
@@ -40,9 +57,9 @@ const Signup = () => {
   };
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    console.log(formData);
+    e?.preventDefault();
     if (step !== 3) return;
+    console.log(formData);
 
     try {
       const response = await fetch("http://localhost:8080/api/users/register", {
@@ -155,11 +172,11 @@ const Signup = () => {
                 </button>
               </div>
             </div>
-            <div>
+            <div className=" flex justify-center">
               <button
                 type="button"
                 onClick={() => handleNext(formData)}
-                className="w-full py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-600 transition duration-200"
+                className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 justify-center"
               >
                 Next
               </button>
@@ -173,6 +190,16 @@ const Signup = () => {
           handleChange={handleChange}
           handleBack={handleBack}
           handleNext={handleNext}
+          handleSubmit={handleSubmit}
+        />
+      )}
+
+      {step === 3 && (
+        <ThirdStep
+          formData={formData}
+          handleBack={handleBack}
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
         />
       )}
     </div>

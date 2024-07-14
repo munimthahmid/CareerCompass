@@ -1,117 +1,29 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-const SelectItems = ({ maxItems = 4 }) => {
+const SelectItems = ({
+  formData,
+  maxItems = 4,
+  onChange,
+  options,
+  setOptions,
+  type,
+  selectedItems,
+}) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [filter, setFilter] = useState("");
-  const [options, setOptions] = useState([
-    "Accounting",
-    "Advertising",
-    "Aerospace Engineering",
-    "Agriculture",
-    "Anthropology",
-    "Architecture",
-    "Artificial Intelligence",
-    "Astronomy",
-    "Automotive Technology",
-    "Banking",
-    "Biochemistry",
-    "Biomedical Engineering",
-    "Biotechnology",
-    "Business Administration",
-    "Chemical Engineering",
-    "Chemistry",
-    "Civil Engineering",
-    "Communications",
-    "Computer Science",
-    "Construction Management",
-    "Counseling",
-    "Criminal Justice",
-    "Cybersecurity",
-    "Data Analysis",
-    "Data Science",
-    "Dentistry",
-    "Design",
-    "Digital Marketing",
-    "Ecology",
-    "Economics",
-    "Education",
-    "Electrical Engineering",
-    "Environmental Science",
-    "Event Planning",
-    "Fashion Design",
-    "Finance",
-    "Food Science",
-    "Forensic Science",
-    "Game Development",
-    "Genetics",
-    "Geology",
-    "Graphic Design",
-    "Healthcare Administration",
-    "Hospitality Management",
-    "Human Resources",
-    "Information Technology",
-    "Interior Design",
-    "Journalism",
-    "Law",
-    "Library Science",
-    "Logistics",
-    "Machine Learning",
-    "Marine Biology",
-    "Marketing",
-    "Mechanical Engineering",
-    "Media Production",
-    "Medical Technology",
-    "Medicine",
-    "Microbiology",
-    "Music Production",
-    "Nanotechnology",
-    "Network Administration",
-    "Nursing",
-    "Nutrition",
-    "Occupational Therapy",
-    "Oceanography",
-    "Operations Management",
-    "Optometry",
-    "Pharmaceuticals",
-    "Pharmacy",
-    "Philosophy",
-    "Photography",
-    "Physical Therapy",
-    "Physics",
-    "Political Science",
-    "Project Management",
-    "Psychiatry",
-    "Psychology",
-    "Public Health",
-    "Public Relations",
-    "Publishing",
-    "Real Estate",
-    "Renewable Energy",
-    "Robotics",
-    "Social Work",
-    "Software Engineering",
-    "Speech Therapy",
-    "Sports Management",
-    "Statistics",
-    "Supply Chain Management",
-    "Teaching",
-    "Tourism",
-    "Translation Services",
-    "Urban Planning",
-    "Veterinary Medicine",
-    "Video Production",
-    "Web Development",
-    "Wildlife Conservation",
-    "Writing",
-    "Zoology",
-  ]);
+
   const [warning, setWarning] = useState("");
-  const [selectedItems, setSelectedItems] = useState([]);
+  // const [selectedItems, setSelectedItems] = useState([]);
 
   const handleSelectChange = (e) => {
+    console.log(e);
     setSelectedOption(e.target.value);
   };
 
+  function handleEnter(e) {
+    if (e.key !== "Enter") return;
+    handleSelectOption(filteredOptions[0]);
+  }
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
   };
@@ -120,21 +32,19 @@ const SelectItems = ({ maxItems = 4 }) => {
     option.toLowerCase().includes(filter.toLowerCase())
   );
 
-  function handleSelectOption(e) {
+  function handleSelectOption(value) {
     if (selectedItems.length < maxItems) {
-      setSelectedItems([...selectedItems, e.target.value]);
+      onChange([...selectedItems, value], type);
       setFilter("");
-      setOptions((options) =>
-        options.filter((option) => option != e.target.value)
-      );
+      setOptions((options) => options.filter((option) => option != value));
     } else {
       setWarning(`You can't select more than ${maxItems} items!`);
     }
   }
 
   function handleDeleteSelected(value) {
-    console.log(value);
-    setSelectedItems((selected) => selected.filter((item) => item != value));
+    const newItems = formData.selectedInterests.filter((item) => item != value);
+    onChange(newItems, type);
     const list = [...options, value];
     list.sort();
     console.log(list);
@@ -144,10 +54,10 @@ const SelectItems = ({ maxItems = 4 }) => {
 
   return (
     <>
-      <div className="grid grid-rows-2 gap-2 grid-cols-2 items-center ">
+      <div className="flex  justify-center items-center  ">
         {selectedItems.map((item) => (
-          <span key={item} className="  mx-4 flex flex-wr">
-            <div className="box-content h-96 w-64 bg-teal-500 p-2 text-center rounded-lg ">
+          <span key={item} className="m-4 flex flex-wr justify-center">
+            <div className="box-content w-64 h-96 bg-teal-500 p-4 text-center rounded-lg ">
               {item}
             </div>
             <button onClick={(e) => handleDeleteSelected(item)}>❌</button>
@@ -168,13 +78,14 @@ const SelectItems = ({ maxItems = 4 }) => {
           placeholder="Type to filter options..."
           value={filter}
           onChange={handleFilterChange}
+          onKeyDown={(e) => handleEnter(e)}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         {filter && (
           <div className="relative">
             <select
               id="options"
-              value={selectedOption}
+              defaultValue={selectedOption}
               onChange={handleSelectChange}
               size={5}
               className="block w-full h-40 px-4 py-2 bg-white border border-gray-300  leading-tight focus:outline-none focus:border-indigo-500 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-500 scrollbar-track-gray-200 rounded-lg "
@@ -184,7 +95,7 @@ const SelectItems = ({ maxItems = 4 }) => {
                   selected
                   key={index}
                   value={option}
-                  onClick={handleSelectOption}
+                  onClick={(e) => handleSelectOption(e.target.value)}
                   className="py-2 hover:bg-red-500 rounded-ful"
                 >
                   {option}
@@ -208,6 +119,14 @@ const SelectItems = ({ maxItems = 4 }) => {
 };
 SelectItems.propTypes = {
   maxItems: PropTypes.number,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
+  options: PropTypes.array,
+  type: PropTypes.string,
+  setOptions: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  selectedItems: PropTypes.array,
+  formData: PropTypes.shape({
+    selectedInterests: PropTypes.array,
+  }),
 };
 export default SelectItems;
