@@ -110,20 +110,5 @@ const SelectItems = ({
     </>
   );
 };
-SelectItems.propTypes = {
-  maxItems: PropTypes.number,
-  children: PropTypes.string,
-  options: PropTypes.array,
-  type: PropTypes.string,
-  setOptions: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  setCities: PropTypes.func.isRequired,
-  selectedItems: PropTypes.array,
-  countryStates: PropTypes.object,
 
-  formData: PropTypes.shape({
-    selectedInterests: PropTypes.array,
-    address: PropTypes.object,
-  }),
-};
 export default SelectItems;

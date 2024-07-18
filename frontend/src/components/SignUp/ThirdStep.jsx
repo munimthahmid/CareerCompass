@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import SelectItems from "./SelectItems";
 import SelectRegions from "./SelectRegions";
-const ThirdStep = ({ formData, handleBack, handleSubmit, handleChange }) => {
+import useSignup from "../../hooks/useSignup";
+const ThirdStep = ({ labelClass }) => {
+  const { formData, handleBack, handleSubmit, handleChange } = useSignup();
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
   const [countryStates, setCountryStates] = useState("");
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -23,25 +25,13 @@ const ThirdStep = ({ formData, handleBack, handleSubmit, handleChange }) => {
         setCountryStates(countryStates);
         console.log(names);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.log("Error fetching data:", error);
       }
     }
 
     fetchData();
   }, []);
-  const [errors, setErrors] = useState({});
 
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.address.street) newErrors.street = "Street is required";
-    if (!formData.address.city) newErrors.city = "City is required";
-    if (!formData.address.state) newErrors.state = "State is required";
-    if (!formData.address.zip) newErrors.zip = "Zip code is required";
-    else if (!/^\d{5}(-\d{4})?$/.test(formData.address.zip))
-      newErrors.zip = "Zip code is invalid";
-    if (!formData.address.country) newErrors.country = "Country is required";
-    return newErrors;
-  };
   const handleChangeAddress = (e, isValue = false) => {
     if (!isValue) {
       const { name, value } = e.target;
@@ -54,103 +44,90 @@ const ThirdStep = ({ formData, handleBack, handleSubmit, handleChange }) => {
     e?.preventDefault();
     console.log(formData);
     handleSubmit();
-    // const validationErrors = validate();
-    // if (Object.keys(validationErrors).length === 0) {
-    //   console.log("Address Submitted: ", formData.address);
-    //   // You can add further form submission logic here
-    // } else {
-    //   setErrors(validationErrors);
-    // }
   };
 
   return (
     <>
       <h1 className="mt-4 text">Address Info</h1>
-      <div className="w-full max-w-lg space-y-6">
-        <form
-          onSubmit={handleSubmitThirdPage}
-          className="w-full max-w-lg space-y-6"
-        >
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2">Street:</label>
-            <input
-              type="text"
-              name="street"
-              value={formData.address.street}
-              onChange={handleChangeAddress}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.street && <span>{errors.street}</span>}
-          </div>
+      <div className="w-full space-y-6">
+        <form onSubmit={handleSubmitThirdPage} className="w-full space-y-6">
+          <div className="rounded-lg p-8  flex flex-col gap-8 w-[54rem] mx-auto my-4 bg-slate-900">
+            <div className="mb-4">
+              <label className={`${labelClass}`}>Street:</label>
+              <input
+                type="text"
+                name="street"
+                value={formData.address.street}
+                onChange={handleChangeAddress}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-          <div>
-            <label className="block text-gray-700 mb-2">City:</label>
-            <input
-              type="text"
-              name="city"
-              value={formData.address.city}
-              onChange={handleChangeAddress}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.city && <span>{errors.city}</span>}
-          </div>
-          <div>
-            <label className="block text-gray-700 mb-2">Zip Code:</label>
-            <input
-              type="text"
-              name="zip"
-              value={formData.address.zip}
-              onChange={handleChangeAddress}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.zip && <span>{errors.zip}</span>}
-          </div>
-          <div>
-            <label className="block text-gray-700 mb-2">Country:</label>
+            <div>
+              <label className={`${labelClass}`}>City:</label>
+              <input
+                type="text"
+                name="city"
+                value={formData.address.city}
+                onChange={handleChangeAddress}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className={`${labelClass}`}>Zip Code:</label>
+              <input
+                type="text"
+                name="zip"
+                value={formData.address.zip}
+                onChange={handleChangeAddress}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className={`${labelClass}`}>Country:</label>
 
-            <SelectRegions
-              onChange={handleChange}
-              formData={formData}
-              options={countries}
-              setOptions={setCountries}
-              setCities={setCities}
-              countryStates={countryStates}
-              type="country"
-            />
-            {errors.country && <span>{errors.country}</span>}
-          </div>
+              <SelectRegions
+                onChange={handleChange}
+                formData={formData}
+                options={countries}
+                setOptions={setCountries}
+                setCities={setCities}
+                countryStates={countryStates}
+                type="country"
+              />
+            </div>
 
-          <div>
-            <label className="block text-gray-700 mb-2">City:</label>
+            <div>
+              <label className={`${labelClass}`}>City:</label>
 
-            <SelectRegions
-              onChange={handleChange}
-              formData={formData}
-              options={cities}
-              type="city"
-            />
-            {errors.country && <span>{errors.country}</span>}
-          </div>
-          <div>
-            <div className="flex justify-center">
-              <span>
-                <button
-                  type="button"
-                  onClick={() => handleBack(formData)}
-                  className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
-                >
-                  Previous
-                </button>
-              </span>
-              <span>
-                <button
-                  type="button"
-                  onClick={handleSubmitThirdPage}
-                  className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
-                >
-                  Submit
-                </button>
-              </span>
+              <SelectRegions
+                onChange={handleChange}
+                formData={formData}
+                options={cities}
+                type="city"
+              />
+            </div>
+            <div>
+              <div className="flex justify-center">
+                <span>
+                  <button
+                    type="button"
+                    onClick={() => handleBack(formData)}
+                    className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
+                  >
+                    Previous
+                  </button>
+                </span>
+                <span>
+                  <button
+                    type="button"
+                    onClick={handleSubmitThirdPage}
+                    className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
+                  >
+                    Submit
+                  </button>
+                </span>
+              </div>
             </div>
           </div>
         </form>
@@ -158,21 +135,5 @@ const ThirdStep = ({ formData, handleBack, handleSubmit, handleChange }) => {
     </>
   );
 };
-ThirdStep.propTypes = {
-  formData: PropTypes.shape({
-    dob: PropTypes.date,
-    careerStatus: PropTypes.string,
-    username: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    email: PropTypes.string,
-    careerGoals: PropTypes.array,
-    address: PropTypes.Object,
-    selectedInterests: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleBack: PropTypes.func.isRequired,
-  handleNext: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-};
+
 export default ThirdStep;

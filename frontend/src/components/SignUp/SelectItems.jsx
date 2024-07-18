@@ -8,6 +8,7 @@ const SelectItems = ({
   setOptions,
   type,
   selectedItems,
+  className,
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [filter, setFilter] = useState("");
@@ -54,7 +55,7 @@ const SelectItems = ({
 
   return (
     <>
-      <div className="flex  justify-center items-center  ">
+      <div className="grid grid-cols-2 grid-rows-2  justify-center items-center  ">
         {selectedItems.map((item) => (
           <span key={item} className="m-4 flex flex-wr justify-center">
             <div className="box-content w-64 h-96 bg-teal-500 p-4 text-center rounded-lg ">
@@ -88,7 +89,7 @@ const SelectItems = ({
               defaultValue={selectedOption}
               onChange={handleSelectChange}
               size={5}
-              className="block w-full h-40 px-4 py-2 bg-white border border-gray-300  leading-tight focus:outline-none focus:border-indigo-500 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-500 scrollbar-track-gray-200 rounded-lg "
+              className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition duration-300 ease-in-out hover:shadow-lg bg-teal-500 text-black text-xl"
             >
               {filteredOptions.map((option, index) => (
                 <option
@@ -117,16 +118,5 @@ const SelectItems = ({
     </>
   );
 };
-SelectItems.propTypes = {
-  maxItems: PropTypes.number,
-  children: PropTypes.string,
-  options: PropTypes.array,
-  type: PropTypes.string,
-  setOptions: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  selectedItems: PropTypes.array,
-  formData: PropTypes.shape({
-    selectedInterests: PropTypes.array,
-  }),
-};
+
 export default SelectItems;
