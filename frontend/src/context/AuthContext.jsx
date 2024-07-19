@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import { useState } from "react";
 
 const AuthContext = createContext();
 const FAKE_USER = {
@@ -28,6 +29,8 @@ function AuthProvider({ children }) {
     reducer,
     initialState
   );
+
+  const [isAdmin, setIsAdmin] = useState(false);
   function login(email, password) {
     console.log("Inside login");
 
@@ -41,7 +44,9 @@ function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, isAuthenticated, login, logout, isAdmin, setIsAdmin }}
+    >
       {children}
     </AuthContext.Provider>
   );

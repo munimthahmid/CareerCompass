@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import PageNav from "../components/PageNav";
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
@@ -37,6 +37,7 @@ export default function Login() {
               Log in to your account to continue sky rocketing your career
               growth!
             </p>
+
             <input
               type="email"
               className="w-full p-4  rounded-md placeholder:font-serif placeholder:font-light placeholder:text-lg text-lg mb-4 bg-white border-gray-300 border"

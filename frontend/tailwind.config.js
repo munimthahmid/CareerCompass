@@ -1,20 +1,21 @@
-/** @type {import('tailwindcss').Config} */
-// const defaultTheme = require("tailwindcss/defaultTheme");
-import defaultTheme from "tailwindcss/defaultTheme";
+const defaultTheme = require("tailwindcss/defaultTheme");
 
-export default {
-  content: ["./*.jsx", "./src/components/*.jsx", "./src/pages/*.jsx"],
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
+    fontFamily: {
+      satoshi: ["Satoshi", "sans-serif"],
+    },
+    screens: {
+      "2xsm": "375px",
+      xsm: "425px",
+      "3xl": "2000px",
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
-        "color-brand--1": "var(--color-brand--1)",
-        "color-brand--2": "var(--color-brand--2)",
-        "color-dark--0": "var(--color-dark--0)",
-        "color-dark--1": "var(--color-dark--1)",
-        "color-dark--2": "var(--color-dark--2)",
-        "color-light--1": "var(--color-light--1)",
-        "color-light--2": "var(--color-light--2)",
-        "color-light--3": "var(--color-light--3)",
         current: "currentColor",
         transparent: "transparent",
         white: "#FFFFFF",
@@ -51,24 +52,7 @@ export default {
         danger: "#D34053",
         warning: "#FFA70B",
       },
-      screens: {
-        "2xsm": "375px",
-        xsm: "425px",
-        "3xl": "2000px",
-        ...defaultTheme.screens,
-      },
       fontSize: {
-        xs: "0.75rem",
-        sm: "0.875rem",
-        base: "1rem",
-        lg: "1.125rem",
-        xl: "1.25rem",
-        "2xl": "1.5rem",
-        "3xl": "1.875rem",
-        "4xl": "2.25rem",
-        "5xl": "3rem",
-        "6xl": "4rem",
-
         "title-xxl": ["44px", "55px"],
         "title-xl": ["36px", "45px"],
         "title-xl2": ["33px", "45px"],
@@ -163,17 +147,6 @@ export default {
         203: "50.75rem",
         230: "57.5rem",
         242.5: "60.625rem",
-      },
-
-      fontFamily: {
-        manrope: ['"Manrope"', "sans-serif"],
-        "fira-sans-condensed": ['"Fira Sans Condensed"', "sans-serif"],
-        merriweather: ['"Merriweather"', "serif"],
-        sofia: ['"Sofia"', "cursive"],
-        lato: ["Lato", "sans-serif"],
-        mulish: ["Mulish", "sans-serif"],
-        mono: ["Rokkitt", "monospace"],
-        satoshi: ["Satoshi", "sans-serif"],
       },
       maxWidth: {
         2.5: "0.625rem",

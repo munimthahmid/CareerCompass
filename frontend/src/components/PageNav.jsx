@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Logo from "./ui/Logo";
 import { useAuth } from "../context/AuthContext";
 import User from "./User";

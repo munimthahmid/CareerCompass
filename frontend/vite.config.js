@@ -4,5 +4,5 @@ import tailwindcss from "tailwindcss";
 import commonjs from "vite-plugin-commonjs";
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), commonjs()],
+  plugins: [react(), tailwindcss()],
 });

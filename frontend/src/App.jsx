@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import JobMarket from "./pages/JobMarket";
@@ -30,16 +30,18 @@ import Settings from "./pages/Settings";
 import Tables from "./pages/Tables";
 import Alerts from "./pages/UiElements/Alerts";
 import Buttons from "./pages/UiElements/Buttons";
+import AdminProfile from "./pages/AdminProfile";
 
 const App = () => {
-  console.log("Hello!");
   return (
     <AuthProvider>
       <SignUpProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" index element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route index element={<Home />} />
+            <Route path="/profile" element={<Profile />}>
+              <Route path="xyz" element={<h1>Hello There!</h1>} />
+            </Route>
             <Route path="/jobs" element={<JobMarket />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/interview" element={<Interview />} />
@@ -51,6 +53,17 @@ const App = () => {
             <Route path="/interest" element={<SelectItems />} />
             <Route path="/confirmaccount" element={<ConfirmAccount />} />
             <Route path="/accountconfirmed" element={<AccountConfirmed />} />
+
+            <Route path="admin" element={<DefaultLayout />}>
+              <Route
+                path="profile"
+                element={
+                  <>
+                    <AdminProfile />
+                  </>
+                }
+              />
+            </Route>
           </Routes>
         </BrowserRouter>
       </SignUpProvider>
