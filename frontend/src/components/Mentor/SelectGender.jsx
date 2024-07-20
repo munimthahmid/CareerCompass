@@ -59,10 +59,10 @@ const SelectGender = ({ onChange, formData }) => {
           <option value="" disabled className="text-body dark:text-bodydark">
             Select Gender
           </option>
-          <option value="USA" className="text-body dark:text-bodydark">
+          <option value="male" className="text-body dark:text-bodydark">
             Male
           </option>
-          <option value="UK" className="text-body dark:text-bodydark">
+          <option value="female" className="text-body dark:text-bodydark">
             Female
           </option>
         </select>

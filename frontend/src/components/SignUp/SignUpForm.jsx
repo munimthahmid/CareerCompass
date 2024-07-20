@@ -4,7 +4,6 @@ import Progressbar from "../Progressbar";
 import SecondStep from "./SecondStep"; // Import the SecondStep component
 import ThirdStep from "./ThirdStep";
 const Signup = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const [step, setStep] = useState(1);
 
   const [formData, setFormData] = useState({
@@ -20,6 +19,7 @@ const Signup = () => {
     address: {},
   });
 
+  const [showPassword, setShowPassword] = useState(false);
   function togglePasswordVisibility() {
     setShowPassword((showPassword) => !showPassword);
   }

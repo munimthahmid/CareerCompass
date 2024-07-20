@@ -1,5 +1,6 @@
 import SelectGender from "./SelectGender";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import the icons
+import { useState } from "react";
 import DatePickerOne from "../../components/Forms/DatePicker/DatePickerOne";
 function MentorPersonalInformation({ setStep, onChange, formData }) {
   function handleChange(name, value) {
@@ -9,6 +10,10 @@ function MentorPersonalInformation({ setStep, onChange, formData }) {
   function handleTest(e, name, value) {
     console.log(e);
     handleChange(name, value);
+  }
+  const [showPassword, setShowPassword] = useState(false);
+  function togglePasswordVisibility() {
+    setShowPassword((showPassword) => !showPassword);
   }
   return (
     <div className="p-7">
@@ -139,6 +144,32 @@ function MentorPersonalInformation({ setStep, onChange, formData }) {
             onChange={(e) => handleChange("username", e.target.value)}
             value={formData.username}
           />
+        </div>
+        <div className="mb-5.5">
+          <label
+            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={(e) => handleChange("password", e.target.value)}
+              className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+              required
+            />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="absolute right-2 top-3 text-gray-500 hover:text-gray-700"
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
         </div>
         <div className="mb-5.5">
           <label
