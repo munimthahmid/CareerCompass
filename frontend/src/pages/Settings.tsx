@@ -1,5 +1,5 @@
-import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
-import userThree from '../images/user/user-03.png';
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
+import userThree from "../images/user/user-03.png";
 
 const Settings = () => {
   return (
@@ -8,6 +8,7 @@ const Settings = () => {
         <Breadcrumb pageName="Settings" />
 
         <div className="grid grid-cols-5 gap-8">
+          {/* Details */}
           <div className="col-span-5 xl:col-span-3">
             <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
@@ -209,6 +210,7 @@ const Settings = () => {
               </div>
             </div>
           </div>
+          {/* Your Photo */}
           <div className="col-span-5 xl:col-span-2">
             <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">

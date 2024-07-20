@@ -31,6 +31,7 @@ import Tables from "./src/pages/Tables";
 import Alerts from "./src/pages/UiElements/Alerts";
 import Buttons from "./src/pages/UiElements/Buttons";
 import AdminProfile from "./src/pages/AdminProfile";
+import MentorApplication from "./src/pages/MentorApplication";
 
 const App = () => {
   return (
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/interest" element={<SelectItems />} />
             <Route path="/confirmaccount" element={<ConfirmAccount />} />
             <Route path="/accountconfirmed" element={<AccountConfirmed />} />
+            <Route path="applyAsMentor" element={<MentorApplication />} />
 
             <Route path="admin" element={<DefaultLayout />}>
               <Route

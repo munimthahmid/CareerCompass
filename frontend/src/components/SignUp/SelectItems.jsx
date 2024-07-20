@@ -8,7 +8,6 @@ const SelectItems = ({
   setOptions,
   type,
   selectedItems,
-  className,
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [filter, setFilter] = useState("");
