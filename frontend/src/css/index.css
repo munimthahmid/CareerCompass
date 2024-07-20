@@ -90,7 +90,7 @@ textarea {
 
 @layer base {
   .page-container {
-    @apply h-[calc(100vh)] bg-cover bg-center bg-[#edf9fe] p-10 min-h-screen;
+    @apply h-[calc(100vh)] bg-cover bg-center bg-[#edf9fe] p-10 pt-2 min-h-screen;
   }
 }
 @layer base {
@@ -257,6 +257,10 @@ span.flatpickr-weekday,
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
   box-shadow: -10px 0 0 #3c50e0;
+}
+
+.user-login-form {
+  font-size: 62.5%;
 }
 
 .map-btn .jvm-zoom-btn {

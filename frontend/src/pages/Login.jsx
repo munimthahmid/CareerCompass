@@ -27,20 +27,20 @@ export default function Login() {
   }
 
   return (
-    <main className="page-container">
+    <main className="page-container ">
       <PageNav />
-      <div className="flex items-center justify-center text-black">
+      <div className="flex items-center justify-center text-black ">
         <div className="relative flex flex-col m-6 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0">
-          <div className="p-6 md:p-20">
-            <h2 className="font-mono mb-5 text-6xl font-bold">Log In</h2>
-            <p className="max-w-sm mb-12 text-lg font-sans  text-gray-600">
+          <div className="p-6 md:p-10">
+            <h2 className="font-mono mb-5 text-4xl font-bold">Log In</h2>
+            <p className="max-w-sm mb-4 text-md font-sans  text-gray-600">
               Log in to your account to continue sky rocketing your career
               growth!
             </p>
 
             <input
               type="email"
-              className="w-full p-4  rounded-md placeholder:font-serif placeholder:font-light placeholder:text-lg text-lg mb-4 bg-white border-gray-300 border"
+              className="w-full p-3  rounded-md placeholder:font-serif placeholder:font-light placeholder:text-sm text-sm mb-4 bg-white border-gray-300 border"
               placeholder="Enter your email address"
               id="email"
               onChange={(e) => setEmail(e.target.value)}
@@ -48,7 +48,7 @@ export default function Login() {
             />
             <input
               type="password"
-              className="w-full p-4  rounded-md placeholder:font-serif placeholder:font-light placeholder:text-lg text-lg mb-4 bg-white border-gray-300 border"
+              className="w-full p-3  rounded-md placeholder:font-serif placeholder:font-light placeholder:text-sm text-sm mb-4 bg-white border-gray-300 border"
               placeholder="Enter your password"
               id="password"
               onChange={(e) => setPassword(e.target.value)}
@@ -95,7 +95,7 @@ export default function Login() {
           <img
             src="public/assets/images/loginSideBar.jpg"
             alt=""
-            className="w-[350px] hidden md:block"
+            className="w-[390px] hidden md:block"
           />
 
           <div className="group absolute -top-5 right-4 flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full md:bg-white md:top-4 hover:cursor-pointer hover:-translate-y-0.5 transition duration-150">

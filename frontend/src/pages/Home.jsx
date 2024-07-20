@@ -7,7 +7,7 @@ import useSignup from "../hooks/useSignup";
 export default function Home() {
   return (
     <main
-      className={`h-[calc(100vh)] bg-cover bg-center bg-[linear-gradient(rgba(36,42,46,0.5),rgba(36,42,46,0.5)),url(../bg-8.jpeg)] p-10`}
+      className={`h-[calc(100vh)] bg-cover bg-center bg-[linear-gradient(rgba(36,42,46,0.5),rgba(36,42,46,0.5)),url(../bg-8.jpeg)] p-10 pt-2`}
     >
       <PageNav isHome={true} />
       <section className="flex flex-col h-[85%] items-center justify-center gap-10 text-center">

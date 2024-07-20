@@ -5,13 +5,13 @@ import User from "./User";
 function AppNav({ isHome = false }) {
   const homeClass = !isHome ? " text-sky-950" : "";
   const baseLinkClasses =
-    "block text-inherit no-underline font-lato font-bold text-base font-bold py-2 px-4 rounded-md text-xl md:text-2xl lg:text-3xl xl:text-3xl" +
+    "block text-inherit no-underline font-lato font-bold text-base font-bold py-2 px-4 rounded-md text-lg md:text-lg lg:text-xl xl:text-xl" +
     homeClass;
   const activeLinkClasses = "bg-var-color-dark--0";
   const hoverclass = "hover:text-teal-500";
 
   const logoClass =
-    "font-bold py-2 px-2 rounded-md text-xl md:text-2xl lg:text-4xl xl:text-5xl font-lato";
+    "font-bold py-2 px-2 rounded-md text-xl md:text-2xl lg:text-3xl xl:text-3xl font-lato";
 
   const { isAuthenticated } = useAuth();
 
