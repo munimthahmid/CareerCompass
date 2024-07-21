@@ -1,9 +1,9 @@
-import PageNav from "../components/PageNav";
-import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
-import userThree from "../images/user/user-03.png";
+import PageNav from "../../components/PageNav";
+import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
+import userThree from "../../images/user/user-03.png";
 import { useState } from "react";
-import MentorPersonalInformation from "../components/Mentor/MentorPersonalInformation";
-import MentorProfessionalInformation from "../components/Mentor/MentorProfessionalInformation";
+import MentorPersonalInformation from "../../components/Mentor/MentorPersonalInformation";
+import MentorProfessionalInformation from "../../components/Mentor/MentorProfessionalInformation";
 export default function MentorApplication() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({

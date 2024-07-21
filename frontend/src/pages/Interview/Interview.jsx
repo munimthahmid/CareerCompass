@@ -1,6 +1,6 @@
 import React from "react";
-import MainLayout from "../components/MainLayout";
-import InterviewPreparation from "../components/InterviewPreparation";
+import MainLayout from "../../components/MainLayout";
+import InterviewPreparation from "../../components/Interview/InterviewPreparation";
 
 const Interview = () => {
   return (

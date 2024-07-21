@@ -1,7 +1,7 @@
 import React from "react";
-import MainLayout from "../components/MainLayout";
-import JobListing from "../components/JobListing";
-import useFetch from "../hooks/useFetch";
+import MainLayout from "../../components/MainLayout";
+import JobListing from "../../components/JobListing";
+import useFetch from "../../hooks/useFetch";
 
 const JobMarket = () => {
   //   const { data, loading, error } = useFetch("http://localhost:8080/api/jobs");

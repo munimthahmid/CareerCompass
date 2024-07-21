@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "./PageNav";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
-import Chatbot from "./Chatbot";
+import Chatbot from "./Chatbot/Chatbot";
 import PropTypes from "prop-types";
 import Logo from "./ui/Logo";
 const MainLayout = ({ children }) => {

@@ -1,8 +1,8 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import PageNav from "../components/PageNav";
-import { useAuth } from "../context/AuthContext";
+import PageNav from "../../components/PageNav";
+import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
-import Button from "../components/ui/Button";
+import Button from "../../components/ui/Button";
 
 export default function Login() {
   const [email, setEmail] = useState("jack@example.com");

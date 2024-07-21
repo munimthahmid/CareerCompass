@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import PageNav from "../components/PageNav";
-import { useAuth } from "../context/AuthContext";
+import PageNav from "../../components/PageNav";
+import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
-import Button from "../components/ui/Button";
+import Button from "../../components/ui/Button";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES

@@ -1,7 +1,6 @@
 import React from "react";
-import MainLayout from "../components/MainLayout";
-import MentorList from "../components/MentorList";
-import useFetch from "../hooks/useFetch";
+import MainLayout from "../../components/MainLayout";
+import MentorList from "../../components/Mentor/MentorList";
 
 const Mentorship = () => {
   //   const { data, loading, error } = useFetch(

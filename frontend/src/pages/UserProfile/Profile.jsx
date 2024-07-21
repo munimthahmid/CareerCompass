@@ -1,6 +1,6 @@
 import React from "react";
-import MainLayout from "../components/MainLayout";
-import UserProfile from "../components/UserProfile";
+import MainLayout from "../../components/MainLayout";
+import UserProfile from "../../components/UserProfile";
 import { Outlet } from "react-router-dom";
 
 const Profile = () => {

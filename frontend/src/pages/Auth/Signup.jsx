@@ -1,9 +1,9 @@
-import PageNav from "../components/PageNav";
-import useSignup from "../hooks/useSignup";
-import Progressbar from "../components/Progressbar";
+import PageNav from "../../components/PageNav";
+import useSignup from "../../hooks/useSignup";
+import Progressbar from "../../components/Progressbar";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import the icons
-import SecondStep from "../components/SignUp/SecondStep"; // Import the SecondStep component
-import ThirdStep from "../components/SignUp/ThirdStep";
+import SecondStep from "../../components/SignUp/SecondStep"; // Import the SecondStep component
+import ThirdStep from "../../components/SignUp/ThirdStep";
 const Signup = () => {
   const {
     formData,
