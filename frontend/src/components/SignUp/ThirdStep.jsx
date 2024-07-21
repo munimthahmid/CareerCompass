@@ -113,7 +113,7 @@ const ThirdStep = ({ labelClass }) => {
                   <button
                     type="button"
                     onClick={() => handleBack(formData)}
-                    className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
+                    className="w-64 py-3 careercompass-bg text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
                   >
                     Previous
                   </button>
@@ -122,7 +122,7 @@ const ThirdStep = ({ labelClass }) => {
                   <button
                     type="button"
                     onClick={handleSubmitThirdPage}
-                    className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
+                    className="w-64 py-3 careercompass-bg text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
                   >
                     Submit
                   </button>

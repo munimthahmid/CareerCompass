@@ -176,7 +176,7 @@ const Signup = () => {
               <button
                 type="button"
                 onClick={() => handleNext(formData)}
-                className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 justify-center"
+                className="w-64 py-3 careercompass-bg text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 justify-center"
               >
                 Next
               </button>

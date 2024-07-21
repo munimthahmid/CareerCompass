@@ -57,7 +57,7 @@ const SelectItems = ({
       <div className="grid grid-cols-2 grid-rows-2  justify-center items-center  ">
         {selectedItems.map((item) => (
           <span key={item} className="m-4 flex flex-wr justify-center">
-            <div className="box-content w-64 h-96 bg-teal-500 p-4 text-center rounded-lg ">
+            <div className="box-content w-64 h-96 careercompass-bg p-4 text-center rounded-lg ">
               {item}
             </div>
             <button onClick={(e) => handleDeleteSelected(item)}>❌</button>
@@ -88,7 +88,7 @@ const SelectItems = ({
               defaultValue={selectedOption}
               onChange={handleSelectChange}
               size={5}
-              className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition duration-300 ease-in-out hover:shadow-lg bg-teal-500 text-black text-xl"
+              className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition duration-300 ease-in-out hover:shadow-lg careercompass-bg text-black text-xl"
             >
               {filteredOptions.map((option, index) => (
                 <option

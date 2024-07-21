@@ -23,7 +23,7 @@ export default function AccountConfirmed() {
           Login to get started with CareerCompass
         </p>
         <button
-          className="px-5 py-3 bg-white-500 rounded-lg w-1/3 mt-6 border-teal-500 border-2 hover:bg-teal-500 font-bold text-black text-2xl hover:text-white duration-300"
+          className="px-5 py-3 bg-white-500 rounded-lg w-1/3 mt-6 careercompass-border border-2 hover:careercompass-bg font-bold text-black text-2xl hover:text-white duration-300"
           onClick={handleClick}
         >
           Login

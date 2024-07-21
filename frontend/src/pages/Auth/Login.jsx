@@ -59,7 +59,7 @@ export default function Login() {
               <div className="font-light text-cyan-850">Forgot password?</div>
 
               <button
-                className="w-full md:w-auto flex justify-center items-center px-5 py-3 space-x-4 font-sans font-bold text-white rounded-md shadow-lg px-9 bg-teal-500 shadow-cyan-100 hover:bg-opacity-90  hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
+                className="w-full md:w-auto flex justify-center items-center px-5 py-3 space-x-4 font-sans font-bold text-white rounded-md shadow-lg px-9 careercompass-bg shadow-cyan-100 hover:bg-opacity-90  hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
                 onClick={handleLogin}
               >
                 <span>Login</span>

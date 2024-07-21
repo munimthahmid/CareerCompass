@@ -251,7 +251,7 @@ function MentorPersonalInformation({ setStep, onChange, formData }) {
             Cancel
           </button>
           <button
-            className="flex justify-center rounded bg-teal-500 py-2 px-6 font-medium text-gray hover:bg-opacity-90"
+            className="flex justify-center rounded careercompass-bg py-2 px-6 font-medium text-gray hover:bg-opacity-90"
             type="submit"
             onClick={() => setStep(2)}
           >

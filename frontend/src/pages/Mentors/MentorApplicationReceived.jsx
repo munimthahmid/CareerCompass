@@ -16,7 +16,7 @@ export default function MentorApplicationReceived() {
         <p className="tracking-wide text-gray-500 text-sm">
           We will contact you within 2-3 working days.
         </p>
-        <button className="px-5 py-3 bg-white-500 rounded-lg w-1/3 mt-6 border-teal-500 border-2 hover:bg-teal-500 font-bold text-black text-2xl hover:text-white duration-300 ">
+        <button className="px-5 py-3 bg-white-500 rounded-lg w-1/3 mt-6 careercompass-border border-2 hover:careercompass-bg font-bold text-black text-2xl hover:text-white duration-300 ">
           Done
         </button>
       </div>

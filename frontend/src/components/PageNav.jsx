@@ -8,7 +8,7 @@ function AppNav({ isHome = false }) {
     "block text-inherit no-underline font-lato font-bold text-base font-bold py-2 px-4 rounded-md text-lg md:text-lg lg:text-xl xl:text-xl" +
     homeClass;
   const activeLinkClasses = "bg-var-color-dark--0";
-  const hoverclass = "hover:text-teal-500";
+  const hoverclass = "hover:careercompass-text";
 
   const logoClass =
     "font-bold py-2 px-2 rounded-md text-xl md:text-2xl lg:text-3xl xl:text-3xl font-lato";
@@ -30,7 +30,7 @@ function AppNav({ isHome = false }) {
           height={50} // Add this line for better control
         />
         <h1
-          className={`${logoClass} ${isHome ? "text-teal-500" : "text-sky-950"}`}
+          className={`${logoClass} ${isHome ? "careercompass-text" : "text-sky-950"}`}
         >
           CareerCompass
         </h1>
@@ -95,7 +95,7 @@ function AppNav({ isHome = false }) {
             <NavLink
               to="/login"
               className={({ isActive }) =>
-                `${baseLinkClasses} ${isActive ? activeLinkClasses : ""} bg-teal-500 text-white hover:bg-black mr-2 active:bg-black`
+                `${baseLinkClasses} ${isActive ? activeLinkClasses : ""} careercompass-bg text-white hover:bg-black mr-2 active:bg-black`
               }
             >
               Login

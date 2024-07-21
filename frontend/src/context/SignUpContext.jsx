@@ -7,14 +7,17 @@ function SignUpProvider({ children }) {
   const [step, setStep] = useState(1);
 
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
     email: "",
     password: "",
+    phoneNumber: null,
     username: "",
+    profilePicture: null,
     dob: null,
+    gender: null,
+    bio: "",
     careerStatus: "",
-    selectedInterests: [],
+    interests: [],
     careerGoals: [],
     address: {},
   });
@@ -23,29 +26,35 @@ function SignUpProvider({ children }) {
     setShowPassword((showPassword) => !showPassword);
   }
 
-  function handleChange(e, type = "") {
-    console.log("type: " + type);
-    if (type === "address") {
-      setFormData((prev) => ({ ...prev, address: e }));
-    } else if (Array.isArray(e)) {
-      if (type == "fieldOfInterest")
-        setFormData((prev) => ({ ...prev, selectedInterests: e }));
-      if (type === "careerGoal")
-        setFormData((prev) => ({ ...prev, careerGoals: e }));
-    } else if (e instanceof Date) {
-      setFormData((prev) => ({ ...prev, dob: e }));
-    } else {
-      e.preventDefault();
-      const targetName = e.target.id;
-      const value = e.target.value;
-      console.log(targetName);
+  // function handleChange(e, type = "") {
+  //   console.log("type: " + type);
+  //   if (type === "address") {
+  //     setFormData((prev) => ({ ...prev, address: e }));
+  //   } else if (Array.isArray(e)) {
+  //     if (type == "fieldOfInterest")
+  //       setFormData((prev) => ({ ...prev, selectedInterests: e }));
+  //     if (type === "careerGoal")
+  //       setFormData((prev) => ({ ...prev, careerGoals: e }));
+  //   } else if (e instanceof Date) {
+  //     setFormData((prev) => ({ ...prev, dob: e }));
+  //   } else {
+  //     e.preventDefault();
+  //     const targetName = e.target.id;
+  //     const value = e.target.value;
+  //     console.log(targetName);
 
-      setFormData((prev) => ({ ...prev, [targetName]: value }));
-    }
+  //     setFormData((prev) => ({ ...prev, [targetName]: value }));
+  //   }
+  // }
+
+  function handleChange(name, value) {
+    console.log(name);
+    console.log(value);
+    setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
-  const handleNext = (data) => {
-    setFormData((prev) => ({ ...prev, ...data }));
+  const handleNext = () => {
+    console.log(formData);
     setStep(step + 1);
   };
 
@@ -55,7 +64,6 @@ function SignUpProvider({ children }) {
 
   async function handleSubmit(e) {
     e?.preventDefault();
-    if (step !== 3) return;
     console.log(formData);
 
     try {
@@ -566,6 +574,7 @@ function SignUpProvider({ children }) {
         setSelectedInterests,
         formData,
         step,
+        setStep,
         setFormData,
         showPassword,
         togglePasswordVisibility,

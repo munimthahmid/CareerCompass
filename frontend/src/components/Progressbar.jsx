@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function Progressbar({ step }) {
-  const activeClass = "bg-teal-500 text-white";
+  const activeClass = "careercompass-bg text-white";
   const inactiveClass =
     "bg-white text-gray-800 border border-gray-500 text-opacity-60";
 
@@ -18,7 +18,7 @@ export default function Progressbar({ step }) {
           1
         </div>
         <div
-          className={`h-1 w-8 ${step > 1 ? "bg-teal-500" : "bg-gray-500"}`}
+          className={`h-1 w-8 ${step > 1 ? "careercompass-bg" : "bg-slate-500"}`}
         ></div>
       </div>
       <div className="flex items-center">
@@ -27,14 +27,6 @@ export default function Progressbar({ step }) {
         >
           2
         </div>
-        <div
-          className={`h-1 w-8 ${step > 2 ? "bg-teal-500" : "bg-gray-500"}`}
-        ></div>
-      </div>
-      <div
-        className={`rounded-full h-8 w-8 text-center flex items-center justify-center font-serif text-lg ${getClassNames(3)}`}
-      >
-        3
       </div>
     </div>
   );

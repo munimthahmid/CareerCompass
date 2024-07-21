@@ -2,12 +2,12 @@ import PageNav from "../../components/PageNav";
 import useSignup from "../../hooks/useSignup";
 // import IntroSection from "../components/IntroSection";
 // import FeaturesSection from "../components/FeaturesSection";
-// import SuccessStories from "../components/SuccessStories";
+// import SuccessStories from "../components/SuccessStories";/
 
 export default function Home() {
   return (
     <main
-      className={`h-[calc(100vh)] bg-cover bg-center bg-[linear-gradient(rgba(36,42,46,0.5),rgba(36,42,46,0.5)),url(../bg-8.jpeg)] p-10 pt-2`}
+      className={`h-[calc(100vh)] bg-cover bg-center bg-[linear-gradient(rgba(36,42,46,0.5),rgba(36,42,46,0.5)),url(../../../src/assets/bg-current.jpg)] p-10 pt-2`}
     >
       <PageNav isHome={true} />
       <section className="flex flex-col h-[85%] items-center justify-center gap-10 text-center">

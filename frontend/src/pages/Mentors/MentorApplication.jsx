@@ -39,7 +39,7 @@ export default function MentorApplication() {
             {/* Details */}
             <div className="col-span-5 xl:col-span-3">
               <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-                <h1 className="text-center mb-4 text-3xl font-bold bg-teal-400 text-sky-950">
+                <h1 className="text-center mb-4 text-3xl font-bold careercompass-bg text-sky-950">
                   Mentor Application
                 </h1>
                 <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">

@@ -41,7 +41,10 @@ const Signup = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-teal-500 mb-2" htmlFor="lastName">
+              <label
+                className="block careercompass-text mb-2"
+                htmlFor="lastName"
+              >
                 Last Name
               </label>
               <input
@@ -54,7 +57,7 @@ const Signup = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-teal-500 mb-2" htmlFor="email">
+              <label className="block careercompass-text mb-2" htmlFor="email">
                 Email
               </label>
               <input
@@ -107,7 +110,7 @@ const Signup = () => {
               <button
                 type="button"
                 onClick={() => handleNext(formData)}
-                className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 justify-center"
+                className="w-64 py-3 careercompass-bg text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 justify-center"
               >
                 Next
               </button>

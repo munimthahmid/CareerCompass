@@ -48,7 +48,7 @@ const SecondStep = ({ labelClass }) => {
             <div className="relative">
               <select
                 id="careerStatus"
-                className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition duration-300 ease-in-out hover:shadow-lg bg-teal-500 text-black text-xl"
+                className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition duration-300 ease-in-out hover:shadow-lg careercompass-bg text-black text-xl"
                 value={formData.careerStatus}
                 onChange={(e) => handleChange(e)}
               >
@@ -90,14 +90,14 @@ const SecondStep = ({ labelClass }) => {
             <button
               type="button"
               onClick={() => handleBack(formData)}
-              className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
+              className="w-64 py-3 careercompass-bg text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
             >
               Previous
             </button>
             <button
               type="button"
               onClick={handleSubmitSecondPage}
-              className="w-64 py-3 bg-teal-500 text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
+              className="w-64 py-3 careercompass-bg text-white rounded-md shadow-md hover:bg-teal-900 transition duration-200 m-4"
             >
               Next
             </button>
