@@ -1,4 +1,4 @@
-import PageNav from "../../components/PageNav";
+import PageNav from "../../components/PageNav/PageNav";
 import useSignup from "../../hooks/useSignup";
 // import IntroSection from "../components/IntroSection";
 // import FeaturesSection from "../components/FeaturesSection";

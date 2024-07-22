@@ -1,4 +1,4 @@
-import PageNav from "../../components/PageNav";
+import PageNav from "../../components/PageNav/PageNav";
 import useSignup from "../../hooks/useSignup";
 import Progressbar from "../../components/Progressbar";
 import SecondStep from "../../components/SignUp/SecondStep"; // Import the SecondStep component
@@ -39,7 +39,6 @@ const Signup = () => {
               </div>
               {step === 1 && <UserPersonalInformation />}
               {step === 2 && <UserProfessionalInformation />}
-              {step === 3 && <ThirdStep labelClass={labelClass} />}
             </div>
           </div>
         </div>

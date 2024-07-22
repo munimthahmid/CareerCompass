@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./PageNav";
+import NavBar from "./PageNav/PageNav";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import Chatbot from "./Chatbot/Chatbot";

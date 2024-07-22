@@ -1,11 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
-import Logo from "./ui/Logo";
-import { useAuth } from "../context/AuthContext";
-import User from "./User";
-function AppNav({ isHome = false }) {
-  const homeClass = !isHome ? " text-sky-950" : "";
+import Logo from "../ui/Logo";
+import { useAuth } from "../../context/AuthContext";
+import User from "../User";
+import DropdownUser from "./DropDownUser";
+function PageNav({ isHome = false }) {
+  const homeClass = !isHome ? " text-sky-950" : " text-white";
   const baseLinkClasses =
-    "block text-inherit no-underline font-lato font-bold text-base font-bold py-2 px-4 rounded-md text-lg md:text-lg lg:text-xl xl:text-xl" +
+    "block text-inherit no-underline font-lato font-bold text-base font-bold py-2 px-4 rounded-md text-lg md:text-lg lg:text-xl xl:text-xl " +
     homeClass;
   const activeLinkClasses = "bg-var-color-dark--0";
   const hoverclass = "hover:careercompass-text";
@@ -113,10 +114,12 @@ function AppNav({ isHome = false }) {
           </li>
         </ul>
       ) : (
-        <User />
+        <div className="">
+          <DropdownUser isHome={isHome} />
+        </div>
       )}
     </nav>
   );
 }
 
-export default AppNav;
+export default PageNav;

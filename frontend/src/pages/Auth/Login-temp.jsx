@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import PageNav from "../../components/PageNav";
+import PageNav from "../../components/PageNav/PageNav";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import Button from "../../components/ui/Button";

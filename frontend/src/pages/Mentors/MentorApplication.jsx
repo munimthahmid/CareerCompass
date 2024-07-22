@@ -1,4 +1,4 @@
-import PageNav from "../../components/PageNav";
+import PageNav from "../../components/PageNav/PageNav";
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
 import userThree from "../../images/user/user-03.png";
 import { useState } from "react";

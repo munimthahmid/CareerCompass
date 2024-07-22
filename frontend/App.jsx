@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./src/pages/Dashboard/Home";
 import Profile from "./src/pages/UserProfile/Profile";
+import Settings from "./src/pages/UserProfile/Settings";
 import JobMarket from "./src/pages/JobMarket/JobMarket";
 import Resume from "./src/pages/Resume/Resume";
 import Interview from "./src/pages/Interview/Interview";
@@ -25,7 +26,7 @@ import Chart from "./src/pages/Utils/Chart";
 import ECommerce from "./src/pages/admin/Dashboard/ECommerce";
 import FormElements from "./src/pages/Form/FormElements";
 import FormLayout from "./src/pages/Form/FormLayout";
-import Settings from "./src/pages/admin/Settings";
+import AdminSettings from "./src/pages/admin/AdminSettings";
 import Tables from "./src/pages/Utils/Tables";
 import Alerts from "./src/pages/UiElements/Alerts";
 import Buttons from "./src/pages/UiElements/Buttons";
@@ -45,9 +46,9 @@ const App = () => {
           <AdminProvider>
             <Routes>
               <Route index element={<Home />} />
-              <Route path="/profile" element={<Profile />}>
-                <Route path="xyz" element={<h1>Hello There!</h1>} />
-              </Route>
+              <Route path="/profile" element={<Profile />} />
+              <Route path="settings" element={<Settings />} />
+
               <Route path="/jobs" element={<JobMarket />} />
               <Route path="/resume" element={<Resume />} />
               <Route path="/interview" element={<Interview />} />
@@ -128,7 +129,7 @@ const App = () => {
                   element={
                     <>
                       <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                      <Settings />
+                      <AdminSettings />
                     </>
                   }
                 />
