@@ -1,0 +1,22 @@
+name: 'career-compass'
+services:
+  user-service:
+    image: tasriad00/career-compass-user_service
+    container_name: user-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DB_URL=jdbc:postgresql://user-db:5432/userDB
+      - DB_USERNAME=tasriad
+      - DB_PASSWORD=password
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+    depends_on:
+      user-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    labels:
+      logging: "promtail"
